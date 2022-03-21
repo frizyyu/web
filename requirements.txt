@@ -4,3 +4,4 @@ werkzeug
 wtforms
 flask_socketio
 sqlalchemy
+flask_login
