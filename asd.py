@@ -1,16 +1,12 @@
-import cgi
 import datetime
 import os
-import time
 
 from flask import Flask, render_template, request, flash
-from flask_login import login_user, LoginManager
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed, FileSize
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 from wtforms import StringField, PasswordField, TextAreaField, BooleanField, SelectField
-from wtforms.validators import InputRequired, ValidationError
+from wtforms.validators import InputRequired
 from flask import redirect
 from data import db_session
 from flask import session
@@ -149,10 +145,13 @@ def login():
         pswd_name_check = db_sess.query(User).all()
         flg_p = 0
         p_f = 0
+        lst = []
         for i in pswd_name_check:
             if not check_password_hash(i.hashed_password, request.form['password_l']):
-                flg_p = 1
-        if flg_p == 1 or not request.form['username_l'] in [i.name for i in pswd_name_check]:
+                if request.form['username_l'] in i.name:
+                    flg_p = 1
+        if flg_p == 1:
+            print([i.hashed_password for i in pswd_name_check], [check_password_hash(i.hashed_password, request.form['password_l'])for i in pswd_name_check])
             print(flg_p == 0, request.form['username_l'], [i.name for i in pswd_name_check])
             flash("Неверное имя пользователя или пароль")
             p_f = 1
