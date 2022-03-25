@@ -34,7 +34,7 @@
                     e.preventDefault();
                 });
 
-                const socket = io.connect('http://127.0.0.1:8080');
+                const socket = io.connect('http://0.0.0.0:8080');
                 const username = $('#username').text();
                 socket.on('connect', () => {
                   $('#messages').append(`{{msgs|safe}}`);
