@@ -99,6 +99,7 @@ async def tun(message: types.Message):
                         except Exception as e:
                             print(f'error {e}')
                 from subprocess import call
+                call('git init', shell = True)
                 call('git add .', shell = True)
                 call('git commit -a "commiting..."', shell = True)
                 call('git push origin master', shell = True)
