@@ -251,6 +251,7 @@ def vinils(num):
     dbg = db_sess.query(Vinils).all()
     ress = dbg[::-1]
     res = []
+    print(dbg)
     for i in range(len(ress)):
         if ress[i].car_type == ct:
             res.append(ress[i])
