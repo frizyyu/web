@@ -100,6 +100,7 @@ async def tun(message: types.Message):
                             print(f'error {e}')
                 from subprocess import call
                 call('git init', shell = True)
+                call('git config --global user.email "artyomvasilyev007.vasilyev@yandex.ru"', shell = True)
                 call('git add .', shell = True)
                 call('git commit -m "commiting..."', shell = True)
                 call('git push origin master', shell = True)
