@@ -8,4 +8,3 @@ flask_login
 gunicorn
 datetime
 aiogram
-subprocess
