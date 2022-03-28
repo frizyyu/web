@@ -98,12 +98,6 @@ async def tun(message: types.Message):
                             break
                         except Exception as e:
                             print(f'error {e}')
-                from subprocess import call
-                call('git init', shell = True)
-                call('git config --global user.name "neneton"', shell = True)
-                call('git add .', shell = True)
-                call('git commit -m "commiting..."', shell = True)
-                call('git push origin master', shell = True)
                 await message.answer('Винил успешно сохранён')
                 break
         except Exception as e:
