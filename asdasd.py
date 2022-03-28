@@ -6,15 +6,10 @@ from aiogram import Bot, types, Dispatcher
 from aiogram.utils import executor
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from git import Repo
 
 TOKEN = "5288298713:AAFW6cXZ2YmVb3sP6xfyzgNBjLqt8XIA7NY"
 bot = Bot(token=TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot)
-repo = Repo(self.rorepo.working_tree_dir)
-heads = repo.heads
-master = heads.master
-master.commit
 
 @dp.message_handler(commands=['start'])
 async def s(message: types.Message):
