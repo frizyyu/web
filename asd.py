@@ -524,8 +524,8 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
+    os.startfile("asdasd.py")
     app.run(port=8080, host='webforumcarx.herokuapp.com')
-    subprocess.call("asdasd.py")
 # текст брать не больше 64 символов в строку!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # <input type="file" class="form-control-file" id="photo" name="file">
 #сделать редирект для всех штук "успешно", чтобы он перекидывал, а потом возвращал в раздел новости
