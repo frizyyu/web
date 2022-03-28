@@ -95,8 +95,8 @@ async def tun(message: types.Message):
                             # form.file.data.save(f'static/img/tunes/knd/{i.id}.knd')
                             # form.img_f.data.save(f'static/img/tunes/imgs/{i.id}.jpg')
                             break
-                        except AttributeError:
-                            pass
+                        except Exception as e:
+                            print(e)
                 await message.answer('Винил успешно сохранён')
                 break
         except Exception as e:
