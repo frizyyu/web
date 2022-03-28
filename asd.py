@@ -1,6 +1,5 @@
 import datetime
 import os
-import subprocess
 
 from flask import Flask, render_template, request, flash
 from flask_wtf import FlaskForm
@@ -524,7 +523,6 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
-    os.startfile("asdasd.py")
     app.run(port=8080, host='webforumcarx.herokuapp.com')
 # текст брать не больше 64 символов в строку!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # <input type="file" class="form-control-file" id="photo" name="file">
