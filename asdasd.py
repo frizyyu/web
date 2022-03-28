@@ -6,10 +6,14 @@ from aiogram import Bot, types, Dispatcher
 from aiogram.utils import executor
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
+from git import Repo
 
 TOKEN = "5288298713:AAFW6cXZ2YmVb3sP6xfyzgNBjLqt8XIA7NY"
 bot = Bot(token=TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot)
+
+PATH_OF_GIT_REPO = r'./'  # make sure .git folder is properly configured
+COMMIT_MESSAGE = 'comment from python script'
 
 @dp.message_handler(commands=['start'])
 async def s(message: types.Message):
@@ -96,7 +100,7 @@ async def tun(message: types.Message):
                             # form.img_f.data.save(f'static/img/tunes/imgs/{i.id}.jpg')
                             break
                         except Exception as e:
-                            print(e)
+                            print(f'error {e}')
                 await message.answer('Винил успешно сохранён')
                 break
         except Exception as e:
