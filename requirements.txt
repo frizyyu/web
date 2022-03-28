@@ -6,7 +6,6 @@ flask_socketio
 sqlalchemy
 flask_login
 gunicorn
-urllib
 datetime
 aiogram
 subprocess
