@@ -9,4 +9,4 @@ gunicorn
 datetime
 aiogram
 Pillow
-git
+gitpython
