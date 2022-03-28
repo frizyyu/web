@@ -10,3 +10,4 @@ datetime
 aiogram
 Pillow
 gitpython
+self
