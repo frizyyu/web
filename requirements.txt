@@ -1,6 +1,6 @@
 flask
 flask_wtf
-Werkzeug==0.16.1
+werkzeug
 wtforms
 flask_socketio
 sqlalchemy
@@ -9,4 +9,4 @@ gunicorn
 datetime
 aiogram
 Pillow
-connexion==2.6.0
+connexion
