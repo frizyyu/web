@@ -76,6 +76,7 @@ class add_vinils(FlaskForm):
                                                    FileSize(0.5 * 1024 * 1024, 0,
                                                             "Размер файла не должен превышать 512КБ")])
 
+
 class add_tuns(FlaskForm):
     name = StringField('Имя тюнинга', validators=[InputRequired("Это поле обязательно")],
                        render_kw={'style': "width:500px; height:45;", "placeholder": "Название тюнинга"})
@@ -111,18 +112,9 @@ class Vins(FlaskForm):
                      render_kw={'style': "width:202px; height:50;", "placeholder": "Введите название автомобиля"})
 
 
-'''@login_manager.user_loader
-def load_user(user_id):
-    from data.usrs import User
-    db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)'''
-
 @socketio.on('message')
 def handleMessage(dat):
     print(f"Message: {dat}")
-    #socket.on('connect', () => {
-    #socket.send({'username': 'CarX chat', 'msg': 'User ' + name + ' has connected!'});
-     #});
     if dat.get('username') != "CarX chat":
         dat['username'] = session["name"]
     send(dat, broadcast=True)
@@ -142,9 +134,13 @@ def login():
         p_f = 0
         lst = []
         for i in pswd_name_check:
-            if not check_password_hash(i.hashed_password, request.form['password_l']):
-                if request.form['username_l'] in i.name:
-                    flg_p = 1
+            print(not check_password_hash(i.hashed_password, request.form['password_l']), request.form['username_l'] != i.name, i.name)
+            if not check_password_hash(i.hashed_password, request.form['password_l']) or request.form['username_l'] != i.name:
+                print("QQ")
+                flg_p = 1
+            elif check_password_hash(i.hashed_password, request.form['password_l']) and request.form['username_l'] == i.name:
+                flg_p = 0
+                break
         if flg_p == 1:
             print([i.hashed_password for i in pswd_name_check], [check_password_hash(i.hashed_password, request.form['password_l'])for i in pswd_name_check])
             print(flg_p == 0, request.form['username_l'], [i.name for i in pswd_name_check])
@@ -152,8 +148,6 @@ def login():
             p_f = 1
         if p_f == 0:
             session['name'] = request.form['username_l']
-            #user = db_sess.query(User).filter(User.name == form.username_l.data).first()
-            #login_user(user, remember=form.remember_me.data)
             return redirect('/')
     return render_template('lg.html', form=form)
 
@@ -207,7 +201,6 @@ def reg():
 
 @app.route('/', methods=['GET', 'POST'])
 def start():
-    #return render_template('start.html')
     return redirect("/news/1")
 
 
@@ -416,6 +409,7 @@ def adv():
             return redirect("/done")
     return render_template('ad_vins.html', form=form, sug=sug)
 
+
 @app.route("/add_tuning", methods=['GET', 'POST'])
 def ad_t():
     form = add_tuns()
@@ -450,6 +444,8 @@ def ad_t():
             return redirect("/done")
     print("НЕТ")
     return render_template('ad_tuns.html', form=form, sug=sug)
+
+
 @app.route("/done")
 def dn():
     return render_template('done.html')
@@ -466,14 +462,15 @@ def delete_t(idd):
         os.remove(f'static/img/tunes/knd/{idd}.knd')
         if os.path.exists(f"static/img/tunes/imgs/{idd}.jpg"):
             os.remove(f"static/img/tunes/imgs/{idd}.jpg")
-        return redirect("/done") #редирект другой сделать
+        return redirect("/done")
     elif session['name'] == 'tehno_py' or session["name"] == "ya_lyceum":
         db_sess.delete(db_sess.query(Tuns).filter(Tuns.id == int(idd)).first())
         db_sess.commit()
         os.remove(f"static/img/tunes/knd/{idd}.knd")
         if os.path.exists(f"static/img/tunes/imgs/{idd}.jpg"):
             os.remove(f"static/img/tunes/imgs/{idd}.jpg")
-        return redirect("/done") #редирект другой сделать
+        return redirect("/done")
+
 
 @app.route('/vinils/delete/<idd>', methods=['GET', 'POST'])
 def delete_v(idd):
@@ -485,13 +482,13 @@ def delete_v(idd):
         db_sess.commit()
         os.remove(f"static/img/vins/knvis/{idd}.knvis")
         os.remove(f"static/img/vins/imgs/{idd}.jpg")
-        return redirect("/done") #редирект другой сделать
+        return redirect("/done")
     elif session['name'] == 'tehno_py' or session["name"] == "ya_lyceum":
         db_sess.delete(db_sess.query(Vinils).filter(Vinils.id == int(idd)).first())
         db_sess.commit()
         os.remove(f"static/img/vins/knvis/{idd}.knvis")
         os.remove(f"static/img/vins/imgs/{idd}.jpg")
-        return redirect("/done") #редирект другой сделать
+        return redirect("/done")
 
 
 @app.route('/news/delete/<idd>', methods=['GET', 'POST'])
@@ -504,7 +501,7 @@ def delete_n(idd):
         db_sess.commit()
         if os.path.exists(f"static/img/news/{idd}.jpg"):
             os.remove(f"static/img/news/{idd}.jpg")
-        return redirect("/done") #редирект другой сделать
+        return redirect("/done")
 
 
 @app.route('/asd', methods=['GET', 'POST'])
@@ -520,12 +517,6 @@ def page_not_found(e):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
-# текст брать не больше 64 символов в строку!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# <input type="file" class="form-control-file" id="photo" name="file">
-#сделать редирект для всех штук "успешно", чтобы он перекидывал, а потом возвращал в раздел новости
-#сделать удаление файлов из директории при удалении из бд
-#проверить корректность удаления записей(новости и винилы)
-#создать акк для учителей ял, чтобы могли потестить
 
 
 #акк яндекса
