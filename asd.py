@@ -518,7 +518,8 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 # текст брать не больше 64 символов в строку!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # <input type="file" class="form-control-file" id="photo" name="file">
 #сделать редирект для всех штук "успешно", чтобы он перекидывал, а потом возвращал в раздел новости
