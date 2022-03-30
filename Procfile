@@ -1,1 +1,1 @@
-web: python asd.py
+web: gunicorn --worker-class eventlet -w 1 asd:app
