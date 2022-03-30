@@ -33,7 +33,7 @@
                     e.preventDefault();
                 });
 
-                const socket = io.connect('https://webforumcarx.herokuapp.com:8080');
+                const socket = io.connect('http://172.17.214.162:5000');
                 const username = $('#username').text();
                 socket.on('connect', () => {
                   $('#messages').append(`{{msgs|safe}}`);
