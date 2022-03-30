@@ -1,6 +1,6 @@
 flask
 flask_wtf
-werkzeug
+Werkzeug==2.0.3
 wtforms
 flask_socketio
 sqlalchemy
