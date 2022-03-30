@@ -1,1 +1,1 @@
-web: gunicorn asd:app
+web: python asd.py
