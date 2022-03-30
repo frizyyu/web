@@ -10,3 +10,5 @@ datetime
 aiogram
 Pillow
 connexion
+eventlet
+gevent-websocket
