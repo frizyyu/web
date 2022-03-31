@@ -113,7 +113,7 @@ class Vins(FlaskForm):
 
 
 @socketio.on('message')
-def handleMessage(dat, session):
+def handleMessage(dat):
     print(session)
     print(f"Message: {dat}")
     if dat.get('username') != "CarX chat":
