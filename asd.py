@@ -121,7 +121,7 @@ def handleMessage(dat):
     #if dat.get('username') != "CarX chat":
         #dat['username'] = session["name"]
     send(dat, broadcast=True)
-    ch_lst.append(f"<li><strong>{dat['name']}:</strong> {dat['msg']}</li>")
+    ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
     #from data.messages import Msg
     #message = Msg(user=dat['username'], message=dat['msg'])
     #db_sess.add(message)
@@ -330,7 +330,7 @@ def chat():
     #print("".join(lst))
     if session.get("name"):
         print(session.get("name"))
-        return render_template('chat.html', name=session.get("name"), msgs="".join(ch_lst), session=session)
+        return render_template('chat.html', username=session.get("name"), msgs="".join(ch_lst), session=session)
     else:
         return redirect("login")
 
