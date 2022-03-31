@@ -321,6 +321,7 @@ def tun(num):
 @app.route('/chat', methods=['GET', 'POST'])
 def chat():
     print(session)
+    global ch_lst
     #from data.messages import Msg
     #get_all = db_sess.query(Msg).all()
     #lst = []
