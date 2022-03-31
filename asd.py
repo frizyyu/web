@@ -113,14 +113,14 @@ class Vins(FlaskForm):
 
 
 @socketio.on('message')
-def handleMessage(dat):
+def handleMessage(dat, session):
     print(session)
     print(f"Message: {dat}")
     if dat.get('username') != "CarX chat":
         dat['username'] = session["name"]
     send(dat, broadcast=True)
     from data.messages import Msg
-    message = Msg(user=dat['username'], message=dat['msg'])
+    message = Msg(name=dat['username'], message=dat['msg'])
     db_sess.add(message)
     db_sess.commit()
 
@@ -326,7 +326,7 @@ def chat():
     print("".join(lst))
     if session.get("name"):
         print(session.get("name"))
-        return render_template('chat.html', name=session.get("name"), msgs="".join(lst))
+        return render_template('chat.html', name=session.get("name"), msgs="".join(lst), session=session)
     else:
         return redirect("login")
 
