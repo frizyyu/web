@@ -116,8 +116,8 @@ class Vins(FlaskForm):
 def handleMessage(dat):
     print(session)
     print(f"Message: {dat}")
-    if dat.get('username') != "CarX chat":
-        dat['username'] = session["name"]
+    #if dat.get('username') != "CarX chat":
+        #dat['username'] = session["name"]
     send(dat, broadcast=True)
     from data.messages import Msg
     message = Msg(name=dat['username'], message=dat['msg'])
