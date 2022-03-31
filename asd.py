@@ -18,6 +18,7 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 db_session.global_init("db/database.db")
 db_sess = db_session.create_session()
 socketio = SocketIO(app, cors_allowed_origins='*', logger=True)
+ch_lst = []
 
 
 class LoginForm(FlaskForm):
@@ -116,13 +117,15 @@ class Vins(FlaskForm):
 def handleMessage(dat):
     print(session)
     print(f"Message: {dat}")
+    global ch_lst
     #if dat.get('username') != "CarX chat":
         #dat['username'] = session["name"]
     send(dat, broadcast=True)
-    from data.messages import Msg
-    message = Msg(user=dat['username'], message=dat['msg'])
-    db_sess.add(message)
-    db_sess.commit()
+    ch_lst.append(f'<li><strong>{dat['username']}:</strong> {dat['msg']}</li>')
+    #from data.messages import Msg
+    #message = Msg(user=dat['username'], message=dat['msg'])
+    #db_sess.add(message)
+    #db_sess.commit()
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -318,15 +321,15 @@ def tun(num):
 @app.route('/chat', methods=['GET', 'POST'])
 def chat():
     print(session)
-    from data.messages import Msg
-    get_all = db_sess.query(Msg).all()
-    lst = []
-    for el in get_all:
-        lst.append(f'<li><strong>{el.user}:</strong> {el.message}</li>')
-    print("".join(lst))
+    #from data.messages import Msg
+    #get_all = db_sess.query(Msg).all()
+    #lst = []
+    #for el in get_all:
+        #lst.append(f'<li><strong>{el.user}:</strong> {el.message}</li>')
+    #print("".join(lst))
     if session.get("name"):
         print(session.get("name"))
-        return render_template('chat.html', name=session.get("name"), msgs="".join(lst), session=session)
+        return render_template('chat.html', name=session.get("name"), msgs="".join(ch_lst), session=session)
     else:
         return redirect("login")
 
