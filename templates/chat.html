@@ -49,11 +49,11 @@
                 socket.on('message', data => {
                     if (data.msg.length > 0) {
                         if (data.username === 'Service message') {
-                            $('#messages').append(`<li class="text-muted"><strong>${name}:</strong> ${data.msg}</li>`);
+                            $('#messages').append(`<li class="text-muted"><strong>${data.name}:</strong> ${data.msg}</li>`);
                             element = document.getElementById("messages");
                             element.scrollTo(0, 999999999999999999999999999999999);
                         } else {
-                            $('#messages').append(`<li class="text"><strong>${name}:</strong> ${data.msg}</li>`);
+                            $('#messages').append(`<li class="text"><strong>${data.name}:</strong> ${data.msg}</li>`);
                             element = document.getElementById("messages");
                             element.scrollTo(0, 999999999999999999999999999999999);
                         }
