@@ -120,7 +120,7 @@ def handleMessage(dat):
         #dat['username'] = session["name"]
     send(dat, broadcast=True)
     from data.messages import Msg
-    message = Msg(name=dat['username'], message=dat['msg'])
+    message = Msg(user=dat['username'], message=dat['msg'])
     db_sess.add(message)
     db_sess.commit()
 
