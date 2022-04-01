@@ -8,7 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import StringField, PasswordField, TextAreaField, BooleanField, SelectField
 from wtforms.validators import InputRequired
 from flask import redirect
-from flask_login import current_user
 
 from data import db_session
 from flask import session
@@ -122,7 +121,7 @@ def handleMessage(dat):
     #if dat.get('username') != "CarX chat":
         #dat['username'] = session["name"]
     send(dat, broadcast=True)
-    ch_lst.append(f"<li><strong>{current_user.name}:</strong> {dat['msg']}</li>")
+    ch_lst.append(f"<li><strong>{None}:</strong> {dat['msg']}</li>")
     #from data.messages import Msg
     #message = Msg(user=dat['username'], message=dat['msg'])
     #db_sess.add(message)
@@ -525,7 +524,7 @@ def page_not_found(e):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     #app.run(host='0.0.0.0', port=port)
-    socketio.run(app, host='0.0.0.0', port=port)
+    socketio.run(app, host='0.0.0.0', port=port, manage_session=True)
 
 
 #акк яндекса
