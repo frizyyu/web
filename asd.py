@@ -121,7 +121,7 @@ def handleMessage(dat):
     #if dat.get('username') != "CarX chat":
         #dat['username'] = session["name"]
     send(dat, broadcast=True)
-    ch_lst.append(f"<li><strong>{None}:</strong> {dat['msg']}</li>")
+    ch_lst.append(f"<li><strong>{session.get('name')}:</strong> {dat['msg']}</li>")
     #from data.messages import Msg
     #message = Msg(user=dat['username'], message=dat['msg'])
     #db_sess.add(message)
@@ -318,7 +318,6 @@ def tun(num):
                                file=file, can_del=can_del, idd=res.id)
 
 
-@socketio.on('message')
 @app.route('/chat', methods=['GET', 'POST'])
 def chat(dat=None):
     print(session)
@@ -329,18 +328,6 @@ def chat(dat=None):
     #for el in get_all:
         #lst.append(f'<li><strong>{el.user}:</strong> {el.message}</li>')
     #print("".join(lst))
-    print(session)
-    print(f"Message: {dat}")
-    global ch_lst
-    #if dat.get('username') != "CarX chat":
-        #dat['username'] = session["name"]
-    send(dat, broadcast=True)
-    if dat not None:
-        ch_lst.append(f"<li><strong>{session.get("name")}:</strong> {dat['msg']}</li>")
-    #from data.messages import Msg
-    #message = Msg(user=dat['username'], message=dat['msg'])
-    #db_sess.add(message)
-    #db_sess.commit()
     if session.get("name"):
         print(session.get("name"))
         return render_template('chat.html', name=session.get("name"), msgs="".join(ch_lst), session=session)
