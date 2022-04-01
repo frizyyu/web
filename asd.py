@@ -318,8 +318,9 @@ def tun(num):
                                file=file, can_del=can_del, idd=res.id)
 
 
+@socketio.on('message')
 @app.route('/chat', methods=['GET', 'POST'])
-def chat():
+def chat(dat=None):
     print(session)
     global ch_lst
     #from data.messages import Msg
@@ -328,6 +329,18 @@ def chat():
     #for el in get_all:
         #lst.append(f'<li><strong>{el.user}:</strong> {el.message}</li>')
     #print("".join(lst))
+    print(session)
+    print(f"Message: {dat}")
+    global ch_lst
+    #if dat.get('username') != "CarX chat":
+        #dat['username'] = session["name"]
+    send(dat, broadcast=True)
+    if dat not None:
+        ch_lst.append(f"<li><strong>{session.get("name")}:</strong> {dat['msg']}</li>")
+    #from data.messages import Msg
+    #message = Msg(user=dat['username'], message=dat['msg'])
+    #db_sess.add(message)
+    #db_sess.commit()
     if session.get("name"):
         print(session.get("name"))
         return render_template('chat.html', name=session.get("name"), msgs="".join(ch_lst), session=session)
@@ -509,11 +522,6 @@ def delete_n(idd):
         if os.path.exists(f"static/img/news/{idd}.jpg"):
             os.remove(f"static/img/news/{idd}.jpg")
         return redirect("/done")
-
-
-@app.route('/asd', methods=['GET', 'POST'])
-def asd():
-    return render_template("main.html")
 
 
 @app.errorhandler(500)
