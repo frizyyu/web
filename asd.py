@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import StringField, PasswordField, TextAreaField, BooleanField, SelectField
 from wtforms.validators import InputRequired
 from flask import redirect
+from flask_login import current_user
 
 from data import db_session
 from flask import session
@@ -121,7 +122,7 @@ def handleMessage(dat):
     #if dat.get('username') != "CarX chat":
         #dat['username'] = session["name"]
     send(dat, broadcast=True)
-    ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
+    ch_lst.append(f"<li><strong>{current_user.name}:</strong> {dat['msg']}</li>")
     #from data.messages import Msg
     #message = Msg(user=dat['username'], message=dat['msg'])
     #db_sess.add(message)
