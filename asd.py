@@ -118,6 +118,7 @@ def handleMessage(dat):
     print(session)
     print(f"Message: {dat}")
     global ch_lst
+    print(request.sid)
     #if dat.get('username') != "CarX chat":
         #dat['username'] = session.get('name')
     send(dat, broadcast=True)
