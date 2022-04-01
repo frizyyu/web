@@ -330,7 +330,7 @@ def chat():
     #print("".join(lst))
     if session.get("name"):
         print(session.get("name"))
-        return render_template('chat.html', username=session.get("name"), msgs="".join(ch_lst), session=session)
+        return render_template('chat.html', name=session.get("name"), msgs="".join(ch_lst), session=session)
     else:
         return redirect("login")
 
