@@ -17,7 +17,7 @@ app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 db_session.global_init("db/database.db")
 db_sess = db_session.create_session()
-socketio = SocketIO(app, cors_allowed_origins='*', logger=True)
+socketio = SocketIO(app, cors_allowed_origins='*', logger=True, manage_session=True)
 ch_lst = []
 
 
@@ -524,7 +524,7 @@ def page_not_found(e):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     #app.run(host='0.0.0.0', port=port)
-    socketio.run(app, host='0.0.0.0', port=port, manage_session=True)
+    socketio.run(app, host='0.0.0.0', port=port)
 
 
 #акк яндекса
