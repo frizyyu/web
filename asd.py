@@ -118,8 +118,8 @@ def handleMessage(dat):
     print(session)
     print(f"Message: {dat}")
     global ch_lst
-    if dat.get('username') != "CarX chat":
-        dat['username'] = session.get('name')
+    #if dat.get('username') != "CarX chat":
+        #dat['username'] = session.get('name')
     send(dat, broadcast=True)
     ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
     return ch_lst
