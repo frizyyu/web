@@ -49,7 +49,7 @@
                 socket.on('message', data => {
                     if (data.msg.length > 0) {
                         if (data.username === 'Service message') {
-                            var data.username = {{session.get("name")}}
+                            var data.username = {{session.get("name")}};
                             $('#messages').append(`<li class="text-muted"><strong>${data.username}:</strong> ${data.msg}</li>`);
                             element = document.getElementById("messages");
                             element.scrollTo(0, 999999999999999999999999999999999);
