@@ -304,7 +304,7 @@ def tun(num):
    
 
 @socketio.on('message')
-    def handleMessage(dat):
+def handleMessage(dat):
         print(session)
         print(f"Message: {dat}")
         global ch_lst
