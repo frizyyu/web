@@ -307,18 +307,7 @@ def tun(num):
                                file=file, can_del=can_del, idd=res.id)
    
 
-
-@app.route('/chat', methods=['GET', 'POST'])
-def chat(dat=None):
-    print(session)
-    global ch_lst
-    #from data.messages import Msg
-    #get_all = db_sess.query(Msg).all()
-    #lst = []
-    #for el in get_all:
-        #lst.append(f'<li><strong>{el.user}:</strong> {el.message}</li>')
-    #print("".join(lst))
-    @socketio.on('message')
+@socketio.on('message')
     def handleMessage(dat):
         print(session)
         print(f"Message: {dat}")
@@ -332,6 +321,18 @@ def chat(dat=None):
         #message = Msg(user=dat['username'], message=dat['msg'])
         #db_sess.add(message)
         #db_sess.commit()
+
+
+@app.route('/chat', methods=['GET', 'POST'])
+def chat():
+    print(session)
+    global ch_lst
+    #from data.messages import Msg
+    #get_all = db_sess.query(Msg).all()
+    #lst = []
+    #for el in get_all:
+        #lst.append(f'<li><strong>{el.user}:</strong> {el.message}</li>')
+    #print("".join(lst))
     if session.get("name"):
         print(session.get("name"))
         return render_template('chat.html', username=session.get("name"), msgs="".join(ch_lst), session=session)
