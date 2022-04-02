@@ -113,22 +113,6 @@ class Vins(FlaskForm):
                      render_kw={'style': "width:202px; height:50;", "placeholder": "Введите название автомобиля"})
 
 
-@socketio.on('message')
-def handleMessage(dat):
-    print(session)
-    print(f"Message: {dat}")
-    global ch_lst
-    #if dat.get('username') != "CarX chat":
-        #dat['username'] = session.get('name')
-    send(dat, broadcast=True)
-    ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
-    return ch_lst
-    #from data.messages import Msg
-    #message = Msg(user=dat['username'], message=dat['msg'])
-    #db_sess.add(message)
-    #db_sess.commit()
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     from data.usrs import User
@@ -317,6 +301,21 @@ def tun(num):
         return render_template('tun.html', fut=505, last=int(num) - 1, num=int(num), name=res.name,
                                desc=res.description, dt=cd, car=res.car_type, form=form, usr=res.user, img_f=img_f,
                                file=file, can_del=can_del, idd=res.id)
+    
+@socketio.on('message')
+def handleMessage(dat):
+    print(session)
+    print(f"Message: {dat}")
+    global ch_lst
+    #if dat.get('username') != "CarX chat":
+        #dat['username'] = session.get('name')
+    send(dat, broadcast=True)
+    ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
+    return ch_lst
+    #from data.messages import Msg
+    #message = Msg(user=dat['username'], message=dat['msg'])
+    #db_sess.add(message)
+    #db_sess.commit()
 
 
 @app.route('/chat', methods=['GET', 'POST'])
