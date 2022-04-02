@@ -307,7 +307,7 @@ def tun(num):
                                file=file, can_del=can_del, idd=res.id)
    
 
-@socketio.on('message')
+@socketio.on('message', namespace='/chat')
     def handleMessage(dat):
         print(session)
         print(f"Message: {dat}")
