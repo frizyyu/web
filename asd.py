@@ -21,7 +21,7 @@ app.config.update(
 )
 db_session.global_init("db/database.db")
 db_sess = db_session.create_session()
-socketio = SocketIO(app, cors_allowed_origins='*', manage_session=False)
+socketio = SocketIO(app, cors_allowed_origins='*', manage_session=True)
 ch_lst = []
 
 
