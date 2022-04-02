@@ -17,7 +17,7 @@ app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 db_session.global_init("db/database.db")
 db_sess = db_session.create_session()
-socketio = SocketIO(app, cors_allowed_origins='*', logger=True, manage_session=False)
+socketio = SocketIO(app, cors_allowed_origins='*', manage_session=False, engineio_logger=True, ping_timeout=5, ping_interval=5)
 ch_lst = []
 
 
