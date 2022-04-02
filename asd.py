@@ -137,6 +137,7 @@ def login():
             p_f = 1
         if p_f == 0:
             session['name'] = request.form['username_l']
+            session.permanent = True
             print("login", request.form['username_l'])
             return redirect('/')
     return render_template('lg.html', form=form)
@@ -184,6 +185,7 @@ def reg():
             db_sess.add(user)
             db_sess.commit()
             session['name'] = request.form['username']
+            session.permanent = True
             print("register", request.form['username_l'])
             return redirect('/')
 
