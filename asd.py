@@ -16,7 +16,6 @@ from flask_socketio import SocketIO, send
 app = Flask(__name__, template_folder='templates')
 #app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 app.config.update(
-    SESSION_COOKIE_HTTPONLY=True,
     SECRET_KEY='yandexlyceum_secret_key'
 )
 db_session.global_init("db/database.db")
@@ -307,7 +306,7 @@ def tun(num):
                                file=file, can_del=can_del, idd=res.id)
    
 
-@socketio.on('message', namespace='/chat')
+@socketio.on('message')
     def handleMessage(dat):
         print(session)
         print(f"Message: {dat}")
