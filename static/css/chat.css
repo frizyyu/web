@@ -1,3 +1,5 @@
+BODY {height: 100%;margin: 0 auto; background: #191919; color: #fc0;}
+
 .text{
   color: white;
 }
@@ -5,8 +7,6 @@
 .form-group{
   color: white;
 }
-
-BODY {height: 100%;margin: 0 auto; background: #191919; color: #fc0;}
 
 button {
     width: 202px;
