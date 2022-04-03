@@ -42,7 +42,7 @@
                 $('#send_msg').on('click', () => {
                     socket.send({
                             'msg': $('#message_input').val(),
-                            'username': username
+                            'username': {{username}}
                         });
                     $('#message_input').val('');
                 });
