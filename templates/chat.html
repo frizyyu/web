@@ -34,7 +34,7 @@
                 });
 
                 const socket = io.connect('https://webforumcarx.herokuapp.com');
-                const username = $('#username').text();
+                const username = {{username}}.text();
                 socket.on('connect', () => {
                   $('#messages').append(`{{msgs|safe}}`);
                 });
@@ -49,11 +49,11 @@
                 socket.on('message', data => {
                     if (data.msg.length > 0) {
                         if (data.username === 'Service message') {
-                            $('#messages').append(`<li class="text-muted"><strong>{{username}}${data.username}:</strong> ${data.msg}</li>`);
+                            $('#messages').append(`<li class="text-muted"><strong>${data.username}:</strong> ${data.msg}</li>`);
                             element = document.getElementById("messages");
                             element.scrollTo(0, 999999999999999999999999999999999);
                         } else {
-                            $('#messages').append(`<li class="text"><strong>{{username}}${data.username}:</strong> ${data.msg}</li>`);
+                            $('#messages').append(`<li class="text"><strong>${data.username}:</strong> ${data.msg}</li>`);
                             element = document.getElementById("messages");
                             element.scrollTo(0, 999999999999999999999999999999999);
                         }
