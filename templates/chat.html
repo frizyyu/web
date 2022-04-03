@@ -18,6 +18,9 @@
                             <input type="text" class="form-control" id="message_input" placeholder="Введите сообщение">
                         </div>
                         <button type="submit" id="send_msg" class="btn btn-success">Отправить</button>
+                        <div type="text" class="form-control" id="username" name="username">
+                         {{username}}
+                        </div>
                     </form>
                 </div>
             </div>
@@ -42,7 +45,7 @@
                 $('#send_msg').on('click', () => {
                     socket.send({
                             'msg': $('#message_input').val(),
-                            'username': ${{ username }}
+                            'username': $('#username').text()
                         });
                     $('#message_input').val('');
                 });
