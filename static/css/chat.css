@@ -25,31 +25,6 @@ BUTTON:hover {
   color: #ebebeb;
 }
 
-.container{
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  overflow-y: scroll;
-  height: 600px;
-  max-height: 600px;
-  width: 1000px;
-  word-wrap: break-word;
-  font-face: "Times New Roman";
-  font-size: 30;
-  background: #353535;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 10px solid #353535;
-  border-right: 25px solid #353535;
-  border-left: 25px solid #353535;
-  border-radius: 8px;
-  bottom: 10px;
-  color: #ebebeb;
-  -moz-box-shadow:0 0 15px #1ba155;
-  -webkit-box-shadow:0 0 15px #1ba155;
-  box-shadow:0 0 15px #1ba155;
-}
-
 .row{
   overflow: auto;
   height: 300px;
