@@ -39,7 +39,7 @@ BUTTON:hover {
   overflow-y: scroll;
   height: 600px;
   max-height: 600px;
-  max-width: 1000px;
+  width: 1000px;
   word-wrap: break-word;
   margin-left: auto;
   margin-right: auto;
