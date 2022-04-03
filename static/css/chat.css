@@ -6,6 +6,8 @@
   color: white;
 }
 
+BODY {height: 100%;margin: 0 auto; background: #191919; color: #fc0;}
+
 button {
     width: 202px;
     background: #1ba155;
@@ -14,18 +16,6 @@ button {
     padding: 1rem 5rem;
     transition: .2s ease-in-out;
    }
-
-.err{
-display: flex;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1865px;
-  background: blue;
-  height: 100%;
-  bottom: 16px;
-  background: #191919;
-}
 
 BUTTON:hover {
   background: #15703d;
