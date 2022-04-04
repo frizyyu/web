@@ -311,7 +311,8 @@ def handleMessage(dat):
         #if dat.get('username') != "CarX chat":
             #dat['username'] = session.get('name')
         send(dat, broadcast=True)
-        ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
+        if len(dat['msg']) > 0:
+            ch_lst.append(f"<li><strong>{dat['username']}:</strong> {dat['msg']}</li>")
         return ch_lst
         #from data.messages import Msg
         #message = Msg(user=dat['username'], message=dat['msg'])
