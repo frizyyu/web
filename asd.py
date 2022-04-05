@@ -184,7 +184,7 @@ def reg():
             db_sess.add(user)
             db_sess.commit()
             session['name'] = request.form['username']
-            print("register", request.form['username_l'])
+            print("register", request.form['username'])
             return redirect('/')
 
     return render_template('reg.html', form=form)
