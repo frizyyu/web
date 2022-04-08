@@ -86,7 +86,7 @@ BODY {height: 100%;margin: 0 auto; background: #000; color: #fc0;}
   height: 35px;
   position: absolute;
   text-align: center;
-  left: 250px;
+  left: 230px;
   top: 170px;
 
 }
@@ -113,7 +113,7 @@ BODY {height: 100%;margin: 0 auto; background: #000; color: #fc0;}
   height: 35px;
   position: absolute;
   text-align: center;
-  left: 580px;
+  left: 560px;
   top: 170px;
 }
 
@@ -207,7 +207,7 @@ BODY {height: 100%;margin: 0 auto; background: #000; color: #fc0;}
   height: 65px;
   position: absolute;
   text-align: center;
-  left: 250px;
+  left: 230px;
   top: 290px;
 }
 .avin-button:hover {
@@ -234,7 +234,7 @@ BODY {height: 100%;margin: 0 auto; background: #000; color: #fc0;}
   height: 65px;
   position: absolute;
   text-align: center;
-  left: 580px;
+  left: 560px;
   top: 290px;
 }
 .atun-button:hover {
