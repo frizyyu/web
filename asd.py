@@ -518,6 +518,12 @@ def page_not_found(e):
     return render_template('500.html'), 500
 
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.pop("name")
+    return redirect("/login")
+
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     #app.run(host='0.0.0.0', port=port)
