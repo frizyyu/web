@@ -42,7 +42,7 @@ class add_news(FlaskForm):
     title = StringField('Заголовок', validators=[InputRequired("Поле не может быть пустым!")],
                         render_kw={'style': "width:500px; height:45;", "placeholder": "Заголовок"})
     description = TextAreaField("Текст новости", validators=[InputRequired("Поле не может быть пустым!")],
-                                render_kw={'style': "max-width:500px; height:45;", "placeholder": "Текст новости"})
+                                render_kw={'style': "width:500px; max-width:500px; height:45;", "placeholder": "Текст новости"})
     file = FileField(validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Файл должен иметь разрешение jpg/png/jpeg'),
                                  FileSize(0.5 * 1024 * 1024, 0, "Размер файла не должен превышать 512КБ")])
 
