@@ -42,7 +42,7 @@ class add_news(FlaskForm):
     title = StringField('Заголовок', validators=[InputRequired("Поле не может быть пустым!")],
                         render_kw={'style': "width:500px; height:45;", "placeholder": "Заголовок"})
     description = TextAreaField("Текст новости", validators=[InputRequired("Поле не может быть пустым!")],
-                                render_kw={'style': "width:500px; max-width:500px; height:45;", "placeholder": "Текст новости"})
+                                render_kw={'style': "width:500px; max-width:500px; min-width:500px; height:45;", "placeholder": "Текст новости"})
     file = FileField(validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Файл должен иметь разрешение jpg/png/jpeg'),
                                  FileSize(0.5 * 1024 * 1024, 0, "Размер файла не должен превышать 512КБ")])
 
@@ -51,7 +51,7 @@ class add_vinils(FlaskForm):
     name = StringField('Имя винила', validators=[InputRequired("Это поле обязательно")],
                        render_kw={'style': "width:500px; height:45;", "placeholder": "Имя винила"})
     description = TextAreaField("Описание", validators=[InputRequired("Это поле обязательно")],
-                                render_kw={'style': "width:500px; max-width:500px; height:45;", "placeholder": "Описание"})
+                                render_kw={'style': "width:500px; max-width:500px; min-width:500px; height:45;", "placeholder": "Описание"})
     car_type = SelectField("Выберите автомобиль", render_kw={'style': "width:500px; max-width:500px; height:45;"},
                            choices=['hachi-roku', 'panther m5 90-s', 'vz 210', 'panther m5', 'bimmy p30', 'hachi-go',
                                     'dacohosu', 'solar', 'wütend', 'phoenix nx', 'thunderstrike', 'black fox',
@@ -82,7 +82,7 @@ class add_tuns(FlaskForm):
     name = StringField('Имя тюнинга', validators=[InputRequired("Это поле обязательно")],
                        render_kw={'style': "width:500px; height:45;", "placeholder": "Название тюнинга"})
     description = TextAreaField("Описание", validators=[InputRequired("Это поле обязательно")],
-                                render_kw={'style': "width:500px; max-width:500px; height:45;", "placeholder": "Описание"})
+                                render_kw={'style': "width:500px; max-width:500px; min-width:500px; height:45;", "placeholder": "Описание"})
     car_type = SelectField("Выберите автомобиль", render_kw={'style': "width:500px; max-width:500px; height:45;"},
                            choices=['hachi-roku', 'panther m5 90-s', 'vz 210', 'panther m5', 'bimmy p30', 'hachi-go',
                                     'dacohosu', 'solar', 'wütend', 'phoenix nx', 'thunderstrike', 'black fox',
