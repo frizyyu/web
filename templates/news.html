@@ -5,6 +5,7 @@
   <title> Новости CarX forum </title>
 <div class="nws">
   <div class="text_news" style="overflow: auto;">
+     <div class="texxt" style="overflow: auto;">
      <h2 align="center";>{{title|safe}}</h2>
      {{desc|safe}}
     {% if file != 0 %}
@@ -14,6 +15,7 @@
     {% if can_del %}
        <p><a href="/news/delete/{{idd}}" class="del_vin">Удалить новость</a>
     {% endif %}
+     </div>
   </div>
 </div>
 {% endblock %}
