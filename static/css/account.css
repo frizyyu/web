@@ -27,6 +27,7 @@ BODY {height: 100%;margin: 0 auto; background: #000; color: #fc0;}
   -moz-box-shadow:0 0 15px #1ba155;
   -webkit-box-shadow:0 0 15px #1ba155;
   box-shadow:0 0 15px #1ba155;
+  left: 75px;
 }
 
 .bg{
