@@ -1,2 +1,0 @@
-http://webforumcarx.herokuapp.com
-https://t.me/CarX_forum_bot
